@@ -1,0 +1,4 @@
+interface:
+  display_name: "Three-Angle Sales Pitch"
+  short_description: "Turn one offer into three proof-backed pitches"
+  default_prompt: "Use $three-angle-sales-pitch to turn this product into three sales pitches for a specific buyer."

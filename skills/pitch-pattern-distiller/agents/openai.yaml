@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pitch Pattern Distiller"
+  short_description: "Extract reusable patterns from great pitches"
+  default_prompt: "Use $pitch-pattern-distiller to turn this sales speech into reusable pitch patterns."
