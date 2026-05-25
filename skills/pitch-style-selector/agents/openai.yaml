@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pitch Style Selector"
+  short_description: "Choose one reusable sales pitch style"
+  default_prompt: "Use $pitch-style-selector with style=proof-ladder to sell this offer to this buyer."

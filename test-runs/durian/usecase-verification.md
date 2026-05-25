@@ -2,7 +2,7 @@
 
 ## Goal
 
-Verify that the initial skills support selling durian rather than overfitting to the original carrot example.
+Verify that the initial selectable pitch styles support selling durian rather than overfitting to the original carrot example or forcing a batch output.
 
 ## Input
 
@@ -13,19 +13,20 @@ Constraint: no invented celebrity endorsement, health claim, origin certificatio
 
 ## Expected Output Shape
 
-The `three-angle-sales-pitch` skill should produce:
+The `pitch-style-selector` skill should produce one selected style at a time:
 
-1. A proof-led pitch about visible quality and selection confidence.
-2. A friction-led pitch that admits smell, mess, price, or first-timer risk.
-3. A scene-led pitch that makes durian a memorable social occasion.
+1. `proof-ladder`: a proof-led pitch about visible quality and selection confidence.
+2. `honest-friction`: a friction-led pitch that admits smell, mess, price, or first-timer risk.
+3. `occasion-spark`: a scene-led pitch that makes durian a memorable social occasion.
 
-Each pitch should include:
+Each style card should include:
 
-- Buyer job
-- Script
-- Why it works
+- Neutral display name
+- Formula
+- Durian example
 - Evidence needed
+- Verification test
 
 ## Verification Result
 
-Pass. The reference fixture in `skills/three-angle-sales-pitch/references/durian-usecase.md` contains all three required angles, keeps the claims evidence-aware, and avoids fake celebrity endorsement.
+Pass. The style cards in `skills/pitch-style-selector/references/styles/` contain all three starter styles, keep claims evidence-aware, avoid celebrity-facing style names, and support one-style output by selection.
