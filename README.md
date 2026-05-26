@@ -45,23 +45,69 @@ All cards live under [`skills/pitch-style-selector/references/styles/`](skills/p
 
 ### 1. Install the skills
 
-**Claude Code** — install as a plugin (recommended). The repo ships a [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) so it works with `/plugin` straight from a local clone or a marketplace:
+Clone the repo first:
 
 ```bash
 git clone <this-repo> awesome-sales-pitches
-/plugin install ./awesome-sales-pitches    # inside a Claude Code session
+cd awesome-sales-pitches
 ```
 
-**Codex CLI** — copy or symlink the skill folders:
+#### Codex
+
+Install globally by copying the skills into Codex's skill directory:
 
 ```bash
 cp -r skills/* ~/.codex/skills/
-# or, to track updates:
-ln -s "$PWD/skills/pitch-style-selector"   ~/.codex/skills/
-ln -s "$PWD/skills/pitch-pattern-distiller" ~/.codex/skills/
 ```
 
-**Any other Anthropic-style runtime** — copy `skills/*` into the runtime's skill directory. Each skill is self-contained.
+If you want future `git pull` updates to apply without re-copying, symlink them instead:
+
+```bash
+ln -s "$PWD/skills/pitch-style-selector" ~/.codex/skills/pitch-style-selector
+ln -s "$PWD/skills/pitch-pattern-distiller" ~/.codex/skills/pitch-pattern-distiller
+```
+
+Then invoke the skills by name:
+
+```text
+Use $pitch-style-selector with style=proof-ladder to sell this offer to this buyer.
+Use $pitch-pattern-distiller to turn this reference sales speech into reusable style cards.
+```
+
+For project-local routing, keep this repo as a sibling and point your project instructions at these skill folders:
+
+```markdown
+When writing or analyzing sales pitches, use:
+- ../awesome-sales-pitches/skills/pitch-style-selector/SKILL.md
+- ../awesome-sales-pitches/skills/pitch-pattern-distiller/SKILL.md
+```
+
+#### Claude Code
+
+Install as a plugin. The repo ships a [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json), so it works with `/plugin` from a local clone or marketplace:
+
+```text
+/plugin install ./awesome-sales-pitches
+```
+
+#### General Agents
+
+For agents without native skill discovery, treat each skill folder as a self-contained instruction package:
+
+1. Add the relevant `SKILL.md` to the agent's system/developer context.
+2. Load referenced files under that skill's `references/` directory only when needed.
+3. Preserve the output contract: `pitch-style-selector` returns one selected style by default.
+4. Keep the rights boundary: neutral style names, no copied source wording, no fake endorsements.
+
+A minimal generic-agent prompt:
+
+```text
+Use the skill at skills/pitch-style-selector/SKILL.md.
+Apply only one selected style card from skills/pitch-style-selector/references/styles/.
+Product: fresh Musang King durian
+Buyer: city customer, curious but hesitant
+Style: honest-friction
+```
 
 ### 2. Pick a style and pin an offer
 
