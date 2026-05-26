@@ -19,6 +19,7 @@ This repo treats famous speeches, livestream scripts, ads, and short-video hooks
 
 - Distill a speech into a named, portable pattern.
 - Apply one selected pitch style to a real product.
+- Supplement missing proof with sourced facts or explicit evidence gaps.
 - Mark every claim that still needs proof before publishing.
 - Stay on the right side of the rights boundary — no fake endorsements, no copied wording.
 
@@ -40,6 +41,8 @@ The default output contract is **one selected style**, not a batch of every angl
 | [`occasion-spark`](skills/pitch-style-selector/references/styles/occasion-spark.md) | Desire through a memorable social scene | Taste, gift, hospitality, or memory-driven products |
 
 All cards live under [`skills/pitch-style-selector/references/styles/`](skills/pitch-style-selector/references/styles/) and follow the [style card schema](skills/pitch-style-selector/references/style-card-schema.md).
+
+Styles that depend on facts use the [evidence supplement guide](skills/pitch-style-selector/references/evidence-supplement.md). `proof-ladder`, for example, should use supplied product facts first, then search or ask for missing numbers, metrics, specs, comparisons, guarantees, and source dates before writing strong claims.
 
 ## Quick Start
 
@@ -129,6 +132,12 @@ The skill returns one pitch in spoken language, plus an evidence checklist for e
 
 **Evidence still needed before publishing:** product variety, origin, packing time, quality footage, guarantee, replacement policy, price basis.
 
+For proof-heavy styles, the output also separates:
+
+- `Evidence used`
+- `Evidence still missing`
+- `Claims not safe to publish yet`
+
 ## How a style is built
 
 A style card is a YAML block inside a Markdown file. The schema is in [`style-card-schema.md`](skills/pitch-style-selector/references/style-card-schema.md). Required fields:
@@ -141,6 +150,7 @@ source_safety:
 best_for:
 avoid_when:
 formula:
+evidence_strategy:
 evidence_needed:
 durian_example:
 verification_test:
@@ -151,8 +161,9 @@ To contribute a new style:
 1. Distill the mechanism from a source speech with `pitch-pattern-distiller`.
 2. Name the mechanism neutrally — no celebrity, no brand.
 3. Write a durian example to prove the style transfers across products.
-4. Add an evidence checklist that catches risky claims (origin, health, performance, authority).
-5. Run the validator.
+4. Add an evidence strategy that says what facts the agent should search for or request before writing.
+5. Add an evidence checklist that catches risky claims (origin, health, performance, authority).
+6. Run the validator.
 
 ## Verify
 
@@ -165,6 +176,7 @@ The script checks that:
 - Every skill passes the Codex skill-creator quick check.
 - No template placeholder (`TODO`, `[TODO`) leaks into production.
 - Every style card carries all required fields.
+- Every style card declares an evidence strategy.
 - No display name borrows celebrity or brand authority.
 - The durian fixture still references all three starter styles.
 

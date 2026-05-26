@@ -14,6 +14,7 @@ source_safety:
 best_for:
 avoid_when:
 formula:
+evidence_strategy:
 evidence_needed:
 durian_example:
 verification_test:
@@ -31,5 +32,6 @@ verification_test:
 1. Distill the mechanism from a source speech.
 2. Name the mechanism neutrally.
 3. Write a formula that does not depend on source wording.
-4. Add a durian example to prove the style transfers.
-5. Add an evidence checklist that catches risky claims.
+4. Write an `evidence_strategy` that tells the selector whether to search, ask, or use supplied facts before writing.
+5. Add a durian example to prove the style transfers.
+6. Add an evidence checklist that catches risky claims.

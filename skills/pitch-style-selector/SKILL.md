@@ -18,6 +18,7 @@ Available starter styles:
 - `occasion-spark` - desire through a memorable social or emotional scene
 
 Read [references/style-card-schema.md](references/style-card-schema.md) before adding a new style card.
+Read [references/evidence-supplement.md](references/evidence-supplement.md) when the selected style depends on facts, metrics, comparisons, limitations, or claims that the user has not supplied.
 
 ## Workflow
 
@@ -33,13 +34,20 @@ Read [references/style-card-schema.md](references/style-card-schema.md) before a
    - Evidence supplied by the user
    - Claims that must stay unverified
 
-3. **Generate one pitch**
+3. **Supplement evidence**
+   - Follow the selected style card's `evidence_strategy`.
+   - Prefer user-supplied facts and primary sources.
+   - If current external facts are needed and search is available, search before writing.
+   - If search is unavailable, ask for the missing facts instead of inventing them.
+   - Keep a short ledger of facts used, source type, and publication or access date when known.
+
+4. **Generate one pitch**
    - Follow the selected style's formula.
    - Keep the script in spoken language.
    - Do not copy source wording, slogans, catchphrases, or celebrity identity.
    - Mark all factual, quality, origin, health, authority, or performance claims that need proof.
 
-4. **Return the output**
+5. **Return the output**
 
 ```markdown
 ## [Display Name] Pitch for [Offer]
@@ -47,9 +55,13 @@ Read [references/style-card-schema.md](references/style-card-schema.md) before a
 Style ID: `[style_id]`
 Why this style fits:
 
+Evidence used:
+
 Script:
 
-Evidence needed:
+Evidence still missing:
+
+Claims not safe to publish yet:
 
 Use-case verification:
 ```

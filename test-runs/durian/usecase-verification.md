@@ -23,10 +23,11 @@ Each style card should include:
 
 - Neutral display name
 - Formula
+- Evidence strategy
 - Durian example
 - Evidence needed
 - Verification test
 
 ## Verification Result
 
-Pass. The style cards in `skills/pitch-style-selector/references/styles/` contain all three starter styles, keep claims evidence-aware, avoid celebrity-facing style names, and support one-style output by selection.
+Pass. The style cards in `skills/pitch-style-selector/references/styles/` contain all three starter styles, keep claims evidence-aware, declare evidence strategies, avoid celebrity-facing style names, and support one-style output by selection.

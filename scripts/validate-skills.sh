@@ -59,6 +59,7 @@ required_fields=(
   best_for
   avoid_when
   formula
+  evidence_strategy
   evidence_needed
   durian_example
   verification_test
@@ -86,6 +87,10 @@ grep -q "style=proof-ladder" "$ROOT/skills/pitch-style-selector/agents/openai.ya
   || fail "openai.yaml default_prompt missing proof-ladder example"
 grep -q "one selected style" "$ROOT/skills/pitch-style-selector/SKILL.md" \
   || fail "pitch-style-selector SKILL.md missing 'one selected style' contract"
+grep -q "Evidence still missing" "$ROOT/skills/pitch-style-selector/SKILL.md" \
+  || fail "pitch-style-selector SKILL.md missing evidence gap output contract"
+grep -q "Search Triggers" "$ROOT/skills/pitch-style-selector/references/evidence-supplement.md" \
+  || fail "evidence supplement reference missing search trigger guidance"
 
 fixture="$ROOT/test-runs/durian/usecase-verification.md"
 [ -f "$fixture" ] || fail "Missing durian fixture: $fixture"
